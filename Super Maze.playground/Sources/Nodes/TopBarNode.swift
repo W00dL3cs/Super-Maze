@@ -14,7 +14,7 @@ public class TopBarNode: SKSpriteNode
     {
         self.instance = parent
         
-        let texture = SKTexture(imageNamed: "toolbar")
+        let texture = SKTexture(imageNamed: "UI/toolbar")
         
         super.init(texture: texture, color: .clear, size: .zero)
         
@@ -22,7 +22,7 @@ public class TopBarNode: SKSpriteNode
         self.isUserInteractionEnabled = true
         
         self.size = CGSize(width: parent.frame.width - (parent.frame.width / 5), height: parent.frame.height / 12)
-        self.position = CGPoint(x: parent.frame.midX - (size.width / 2), y: parent.frame.height - frame.height - 15)
+        self.position = CGPoint(x: parent.frame.midX - (size.width / 2), y: parent.frame.height - frame.height - 15 - 60)
         
         self.menuButton = SKSpriteNode(imageNamed: "UI/menu-button")
         self.menuButton.size = CGSize(width: size.height / 2, height: size.height / 2)
@@ -34,6 +34,11 @@ public class TopBarNode: SKSpriteNode
         
         addChild(menuButton)
         addChild(helpButton)
+    }
+    
+    public func startY() -> CGFloat
+    {
+        return (instance.frame.height - self.frame.origin.y)
     }
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)

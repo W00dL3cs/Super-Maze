@@ -9,6 +9,8 @@ public class MenuNode : SKSpriteNode
     private var aboutButton:SKSpriteNode!
     private var backButton:SKSpriteNode!
     
+    private var backgroundImage:SKSpriteNode!
+    
     private var aboutNode:SKSpriteNode?
     
     private var sceneType:SceneType!
@@ -28,6 +30,10 @@ public class MenuNode : SKSpriteNode
         self.size = CGSize(width: parent.frame.width * 2/3, height: parent.frame.height / 3)
         self.position = CGPoint(x: parent.frame.midX, y: parent.frame.midY)
         
+        self.backgroundImage = SKSpriteNode(imageNamed: "background")
+        self.backgroundImage.size = parent.frame.size
+        self.backgroundImage.zPosition = -1
+        
         self.playButton = SKSpriteNode(imageNamed: "UI/play-button")
         self.playButton.size = CGSize(width: frame.width - (frame.width / 4), height: frame.height / 5)
         
@@ -37,6 +43,7 @@ public class MenuNode : SKSpriteNode
         
         addChild(playButton)
         addChild(aboutButton)
+        addChild(backgroundImage)
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)

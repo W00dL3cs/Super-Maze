@@ -15,7 +15,7 @@ public enum PatchType : String, CustomStringConvertible
     
     public var description: String
     {
-        return "patch-\(self.rawValue.replacingOccurrences(of: "_", with: "-"))"
+        return "floors/patch-\(self.rawValue.replacingOccurrences(of: "_", with: "-"))"
     }
     
     static func random() -> PatchType

@@ -93,7 +93,7 @@ public class MazeNode : SKSpriteNode
     
     private func draw()
     {
-        let drawableRect = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height - self.toolbar.frame.height)
+        let drawableRect = CGRect(x: 0, y: 60, width: self.frame.width, height: self.frame.height - self.toolbar.startY() - 60)
         
         // TODO: Support for toolbar?
         maze.resizeAccordingTo(frame: drawableRect)

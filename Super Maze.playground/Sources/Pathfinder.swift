@@ -10,14 +10,14 @@ public enum Algorithm: CustomStringConvertible
     {
         switch self
         {
-            case .aStar:
-                return "A*"
+        case .aStar:
+            return "A*"
             
-            case .bfs:
-                return "BFS"
+        case .bfs:
+            return "BFS"
             
-            case .dijkstra:
-                return "Dijkstra's"
+        case .dijkstra:
+            return "Dijkstra's"
         }
     }
 }
@@ -76,7 +76,7 @@ public class Pathfinder
             // If X is a solution, return (X, SUCCEED)
             if currentNode == map.endNode
             {
-                // Succsessfully found the end node
+                // Successfully found the end node
                 let path = getPathFromStartTo(currentNode)
                 
                 return (path, open, getClosedNodesWithoutPath(path, allClosed: closed))
@@ -121,7 +121,7 @@ public class Pathfinder
                     insertIntoOpen(successor)
                 }
                     
-                // else if g(X) + arc-cost(X,S) < g(S) then (found cheaper path to S):
+                    // else if g(X) + arc-cost(X,S) < g(S) then (found cheaper path to S):
                 else if let currentNodeG = currentNode.g, let successorG = successor.g, currentNodeG + successor.cost < successorG
                 {
                     // attach-and-eval(S,X)
@@ -212,46 +212,46 @@ public class Pathfinder
     {
         switch algorithm
         {
-            case .aStar:
-                var index = 0
+        case .aStar:
+            var index = 0
+            
+            for nIndex in 0..<(open.count)
+            {
+                let n = open[nIndex]
                 
-                for nIndex in 0..<(open.count)
+                if let nF = n.f, let nodeF = node.f, nF >= nodeF
                 {
-                    let n = open[nIndex]
-                    
-                    if let nF = n.f, let nodeF = node.f, nF >= nodeF
-                    {
-                        break
-                    }
-                    else
-                    {
-                        index += 1
-                    }
+                    break
                 }
-                
-                open.insert(node, at: index)
-                
-            case .bfs:
-                open.append(node)
-                
-            case .dijkstra:
-                var index = 0
-                
-                for nIndex in 0..<(open.count)
+                else
                 {
-                    let n = open[nIndex]
-                    
-                    if let nG = n.g, let nodeG = node.g, nG >= nodeG
-                    {
-                        break
-                    }
-                    else
-                    {
-                        index += 1
-                    }
+                    index += 1
                 }
+            }
+            
+            open.insert(node, at: index)
+            
+        case .bfs:
+            open.append(node)
+            
+        case .dijkstra:
+            var index = 0
+            
+            for nIndex in 0..<(open.count)
+            {
+                let n = open[nIndex]
                 
-                open.insert(node, at: index)
+                if let nG = n.g, let nodeG = node.g, nG >= nodeG
+                {
+                    break
+                }
+                else
+                {
+                    index += 1
+                }
+            }
+            
+            open.insert(node, at: index)
         }
         
     }

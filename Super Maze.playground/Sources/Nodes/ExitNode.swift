@@ -29,7 +29,7 @@ public class ExitNode: SKSpriteNode
         self.cancelButton = SKSpriteNode(imageNamed: "UI/cancel-button")
         self.cancelButton.size = self.confirmButton.size
         self.cancelButton.position = CGPoint(x: cancelButton.size.width, y: -(size.height / 2))
-
+        
         addChild(confirmButton)
         addChild(cancelButton)
     }
