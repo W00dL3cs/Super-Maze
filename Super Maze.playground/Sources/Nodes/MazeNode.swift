@@ -124,7 +124,7 @@ public class MazeNode : SKSpriteNode
                         }
                         else if (node.type == .obstacle)
                         {
-                            let node = SKSpriteNode(imageNamed: "prop-tree-5")
+                            let node = SKSpriteNode(imageNamed: "maze/obstacle")
                             node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
                             node.position = patch.position
                             node.position.y -= (nodeSize / 2)
@@ -138,7 +138,7 @@ public class MazeNode : SKSpriteNode
                         }
                         else if (node.type == .start || node.type == .end)
                         {
-                            let warp = SKSpriteNode(imageNamed: "prop-warp-1")
+                            let warp = SKSpriteNode(imageNamed: "maze/warp")
                             warp.anchorPoint = CGPoint(x: 0.5, y: 0.0)
                             warp.position = patch.position
                             warp.position.y -= (nodeSize / 2)
@@ -186,7 +186,7 @@ public class MazeNode : SKSpriteNode
     {
         if let spawn = spawn, let nodeSize = maze.nodeSize
         {
-            player = SKSpriteNode(imageNamed: "ball")
+            player = SKSpriteNode(imageNamed: "maze/ball")
             
             player.name = "ball"
             player.position = spawn
