@@ -102,11 +102,11 @@ public class Map
         
         // Step 5: Randomly remove obstacles in order to create multiple paths and increase difficulty
         let walkable = result.graph.flatMap
+        {
+            $0.filter
             {
-                $0.filter
-                    {
-                        $0.type == .obstacle && ($0.x > 1 && $0.x < (randomWidth - 2)) && ($0.y > 1 && $0.y < (randomHeight - 2))
-                }
+                $0.type == .obstacle && ($0.x > 1 && $0.x < (randomWidth - 2)) && ($0.y > 1 && $0.y < (randomHeight - 2))
+            }
         }
         
         for i in 0..<arc4random_uniform(UInt32(sqrt(Double(walkable.count))))
@@ -121,8 +121,8 @@ public class Map
         
         // Set the external borders of the maze as non-walkable once again
         result.graph[0].map
-            {
-                $0.type = .obstacle
+        {
+            $0.type = .obstacle
         }
         
         return result

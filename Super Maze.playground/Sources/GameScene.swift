@@ -3,20 +3,6 @@ import Foundation
 import CoreMotion
 import AVFoundation
 
-public enum CollisionType : UInt32
-{
-    case player = 1
-    case end = 2
-}
-
-public enum SceneType
-{
-    case homepage
-    case about
-    case play
-    case nextlevel
-}
-
 public class GameScene : SKScene, SKPhysicsContactDelegate
 {
     public var menuNode:MenuNode?
@@ -165,7 +151,7 @@ public class GameScene : SKScene, SKPhysicsContactDelegate
                 
                 player.run(sequence, completion:
                 {
-                        self.drawScore()
+                    self.drawScore()
                 })
             }
         }
